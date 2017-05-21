@@ -1,10 +1,12 @@
 package de.tillmannheigel.xperimentz.reactiveclient.controller;
 
+import java.awt.PageAttributes;
 import java.nio.file.Files;
 import java.time.Duration;
 import java.util.Date;
 import java.util.stream.Stream;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,10 +15,8 @@ import de.tillmannheigel.xperimentz.reactiveclient.model.Event;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.util.function.Tuple2;
 
-/**
- * Created by tillmannheigel on 21.05.17.
- */
 @RestController
 public class BasicController {
 
@@ -25,13 +25,13 @@ public class BasicController {
         return Mono.just(new Event(id, new Date()));
     }
 
-    @GetMapping("/events")
+    @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE, value = "/events")
     Flux<Event> events(){
         Flux<Event> eventFlux = Flux.fromStream(
                 Stream.generate(() -> new Event(System.currentTimeMillis(), new Date()))
         );
         Flux<Long> heartbeatFlux = Flux.interval(Duration.ofSeconds(1));
-        return Flux.zip(eventFlux, heartbeatFlux).map(objects -> objects.getT1());
+        return Flux.zip(eventFlux, heartbeatFlux).map(Tuple2::getT1);
     }
 
 }
