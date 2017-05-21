@@ -1,4 +1,4 @@
-package de.tillmannheigel.xperimentz.reactiveclient.model;
+package de.tillmannheigel.xperimentz.model;
 
 import java.util.Date;
 

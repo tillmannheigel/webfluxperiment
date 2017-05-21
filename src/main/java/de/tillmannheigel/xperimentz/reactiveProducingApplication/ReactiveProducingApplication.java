@@ -1,12 +1,12 @@
-package de.tillmannheigel.xperimentz.reactiveclient;
+package de.tillmannheigel.xperimentz.reactiveProducingApplication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ReactiveClientApplication {
+public class ReactiveProducingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ReactiveClientApplication.class, args);
+		SpringApplication.run(ReactiveProducingApplication.class, args);
 	}
 }

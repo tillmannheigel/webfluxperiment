@@ -1,4 +1,4 @@
-package de.tillmannheigel.xperimentz.reactiveclient;
+package de.tillmannheigel.xperimentz.reactiveProducingApplication;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

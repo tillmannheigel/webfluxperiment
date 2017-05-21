@@ -1,7 +1,5 @@
-package de.tillmannheigel.xperimentz.reactiveclient.controller;
+package de.tillmannheigel.xperimentz.reactiveProducingApplication.controller;
 
-import java.awt.PageAttributes;
-import java.nio.file.Files;
 import java.time.Duration;
 import java.util.Date;
 import java.util.stream.Stream;
@@ -11,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import de.tillmannheigel.xperimentz.reactiveclient.model.Event;
+import de.tillmannheigel.xperimentz.model.Event;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -30,7 +28,7 @@ public class BasicController {
         Flux<Event> eventFlux = Flux.fromStream(
                 Stream.generate(() -> new Event(System.currentTimeMillis(), new Date()))
         );
-        Flux<Long> heartbeatFlux = Flux.interval(Duration.ofSeconds(1));
+        Flux<Long> heartbeatFlux = Flux.interval(Duration.ofMillis(234));
         return Flux.zip(eventFlux, heartbeatFlux).map(Tuple2::getT1);
     }
 
