@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class WeatherService {
 
-    public Temperature getTemperatureForZipcodeDE(int zipcode){
+    public Temperature getTemperatureForZipcodeDE(double zipcode){
         return new Temperature(25.5);
     }
 
