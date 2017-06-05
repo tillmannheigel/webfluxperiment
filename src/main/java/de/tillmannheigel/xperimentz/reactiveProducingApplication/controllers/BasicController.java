@@ -1,4 +1,4 @@
-package de.tillmannheigel.xperimentz.reactiveProducingApplication.controller;
+package de.tillmannheigel.xperimentz.reactiveProducingApplication.controllers;
 
 import java.time.Duration;
 import java.util.Date;
